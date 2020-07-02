@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ExperienciasService } from './experiencias/experiencias.service';
-import { ExperienciasController } from './experiencias/experiencias.controller';
+import { ExperienciasService } from './experiencias.service';
+import { ExperienciasController } from './experiencias.controller';
 import { Experiencia } from './experiencia.entity';
 
 @Module({
