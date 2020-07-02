@@ -7,7 +7,7 @@ export class Cliente {
     id: number;
 
     @Column()
-    cpf: number;
+    cpf: string;
 
     @Column()
     nome: string;

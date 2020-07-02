@@ -1,10 +1,9 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { Avaliacao } from './avaliacao.entity';
 import { AvaliacoesService } from './avaliacoes.service';
 import { CreateAvaliacaoDto } from './dto/create-avaliacao.dto';
 import { UpdateAvaliacaoDto } from './dto/update-avaliacao.dto';
-import { IdParameterDto } from '../dto/idParameter.dto';
 
 @Controller('avaliacoes')
 export class AvaliacoesController {
@@ -22,14 +21,14 @@ export class AvaliacoesController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: IdParameterDto, @Body() avaliacaoData: UpdateAvaliacaoDto): Promise<UpdateResult> {
-    avaliacaoData.id = Number(id);
+  async update(@Param('id', ParseIntPipe) id: number, @Body() avaliacaoData: UpdateAvaliacaoDto): Promise<UpdateResult> {
+    avaliacaoData.id = id;
     return this.avaliacoesService.update(avaliacaoData);
   }  
 
   @Delete(':id')
-  async delete(@Param('id') id:IdParameterDto): Promise<DeleteResult> {
-    return this.avaliacoesService.delete(Number(id));
+  async delete(@Param('id', ParseIntPipe) id:number): Promise<DeleteResult> {
+    return this.avaliacoesService.delete(id);
   }  
 
 }
