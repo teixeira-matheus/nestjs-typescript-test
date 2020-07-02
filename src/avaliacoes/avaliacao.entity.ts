@@ -1,19 +1,19 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Experiencia } from "../experiencias/experiencia.entity";
 
 @Entity()
 export class Avaliacao {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    cpf: number;
+    // create experienciaId
+    @OneToOne(() => Experiencia)
+    @JoinColumn()
+    experiencia: Experiencia;
 
     @Column()
-    nome: string;
+    comentario: string;
 
     @Column()
-    email: string;
-
-    @Column()
-    telefone: number;
+    nota: number;
 }
