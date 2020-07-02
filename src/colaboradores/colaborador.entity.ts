@@ -13,9 +13,6 @@ export class Colaborador {
     email: string;
 
     @Column()
-    status: boolean;
-
-    @Column()
     ativo: boolean;
 
     @OneToMany(() => Experiencia, experiencia => experiencia.colaborador)
