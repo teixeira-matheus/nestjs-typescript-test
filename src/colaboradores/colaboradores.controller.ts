@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { Colaborador } from './colaborador.entity';
 import { ColaboradoresService } from './colaboradores.service';
+import { CreateColaboradorDto } from './dto/create-colaborador.dto';
+import { UpdateColaboradorDto } from './dto/update-colaborador.dto';
 
 @Controller('colaboradores')
 export class ColaboradoresController {
@@ -14,19 +16,19 @@ export class ColaboradoresController {
   }    
 
   @Post()
-  async create(@Body() colaboradorData: Colaborador): Promise<Colaborador> {
+  async create(@Body() colaboradorData: CreateColaboradorDto): Promise<Colaborador> {
     return this.colaboradoresService.create(colaboradorData);
   }
 
   @Put(':id')
-  async update(@Param('id') id:string, @Body() colaboradorData: Colaborador): Promise<UpdateResult> {
-    colaboradorData.id = Number(id);
+  async update(@Param('id', ParseIntPipe) id:number, @Body() colaboradorData: UpdateColaboradorDto): Promise<UpdateResult> {
+    colaboradorData.id = id;
     return this.colaboradoresService.update(colaboradorData);
   }  
 
   @Delete(':id')
-  async delete(@Param('id') id:string): Promise<DeleteResult> {
-    return this.colaboradoresService.delete(Number(id));
+  async delete(@Param('id', ParseIntPipe) id:number): Promise<DeleteResult> {
+    return this.colaboradoresService.delete(id);
   }   
 
 }

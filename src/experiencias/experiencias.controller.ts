@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { Experiencia } from './experiencia.entity';
 import { ExperienciasService } from './experiencias.service';
+import { CreateExperienciaDto } from './dto/create-experiencia.dto';
+import { UpdateExperienciaDto } from './dto/update-experiencia.dto';
 
 @Controller('experiencias')
 export class ExperienciasController {
@@ -14,19 +16,19 @@ export class ExperienciasController {
   }    
 
   @Post()
-  async create(@Body() experienciaData: Experiencia): Promise<Experiencia> {
+  async create(@Body() experienciaData: CreateExperienciaDto): Promise<Experiencia> {
     return this.experienciasService.create(experienciaData);
   }
 
   @Put(':id')
-  async update(@Param('id') id:string, @Body() experienciaData: Experiencia): Promise<UpdateResult> {
-    experienciaData.id = Number(id);
+  async update(@Param('id', ParseIntPipe) id:number, @Body() experienciaData: UpdateExperienciaDto): Promise<UpdateResult> {
+    experienciaData.id = id;
     return this.experienciasService.update(experienciaData);
   }  
 
   @Delete(':id')
-  async delete(@Param('id') id:string): Promise<DeleteResult> {
-    return this.experienciasService.delete(Number(id));
+  async delete(@Param('id', ParseIntPipe) id:number): Promise<DeleteResult> {
+    return this.experienciasService.delete(id);
   }   
   
 }
