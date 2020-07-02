@@ -18,6 +18,9 @@ export class Cliente {
     @Column()
     telefone: number;
 
+    @Column()
+    ativo: boolean;
+
     @OneToMany(() => Experiencia, experiencia => experiencia.cliente)
     experiencias: Experiencia[];
 }
