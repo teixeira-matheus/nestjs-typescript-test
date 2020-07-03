@@ -7,7 +7,7 @@ export class Cliente {
     id: number;
 
     @Column()
-    cpf: number;
+    cpf: string;
 
     @Column()
     nome: string;
@@ -17,6 +17,9 @@ export class Cliente {
 
     @Column()
     telefone: number;
+
+    @Column()
+    ativo: boolean;
 
     @OneToMany(() => Experiencia, experiencia => experiencia.cliente)
     experiencias: Experiencia[];

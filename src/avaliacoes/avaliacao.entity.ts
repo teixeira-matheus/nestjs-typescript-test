@@ -11,8 +11,8 @@ export class Avaliacao {
     @JoinColumn()
     experiencia: Experiencia;
 
-    @Column()
-    comentario: string;
+    @Column({ nullable: true })
+    comentario: string | null;
 
     @Column()
     nota: number;

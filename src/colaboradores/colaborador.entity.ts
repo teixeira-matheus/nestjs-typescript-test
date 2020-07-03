@@ -13,7 +13,7 @@ export class Colaborador {
     email: string;
 
     @Column()
-    status: boolean;
+    ativo: boolean;
 
     @OneToMany(() => Experiencia, experiencia => experiencia.colaborador)
     experiencias: Experiencia[];

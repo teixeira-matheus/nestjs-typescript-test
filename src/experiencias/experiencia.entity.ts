@@ -17,8 +17,8 @@ export class Experiencia {
     @ManyToOne(() => Cliente, cliente => cliente.experiencias)
     cliente: Cliente;
 
-    @Column()
-    data: string;
+    @Column({ type: "date" })
+    data: Date;
 
     @Column()
     valor: number;

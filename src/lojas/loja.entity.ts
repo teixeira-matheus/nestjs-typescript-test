@@ -9,6 +9,9 @@ export class Loja {
     @Column()
     nome: string;
 
+    @Column()
+    ativo: boolean;
+
     @OneToMany(() => Experiencia, experiencia => experiencia.loja)
     experiencias: Experiencia[];
 }

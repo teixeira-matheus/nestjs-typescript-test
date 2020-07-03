@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { Cliente } from './cliente.entity';
 import { ClientesService } from './clientes.service';
+import { CreateClienteDto } from './dto/create-cliente.dto';
+import { UpdateClienteDto } from './dto/update-cliente.dto';
 
 @Controller('clientes')
 export class ClientesController {
@@ -14,19 +16,19 @@ export class ClientesController {
   }    
 
   @Post()
-  async create(@Body() clienteData: Cliente): Promise<Cliente> {
+  async create(@Body() clienteData: CreateClienteDto): Promise<Cliente> {
     return this.clientesService.create(clienteData);
   }
 
   @Put(':id')
-  async update(@Param('id') id:string, @Body() clienteData: Cliente): Promise<UpdateResult> {
-    clienteData.id = Number(id);
+  async update(@Param('id', ParseIntPipe) id:number, @Body() clienteData: UpdateClienteDto): Promise<UpdateResult> {
+    clienteData.id = id;
     return this.clientesService.update(clienteData);
   }  
 
   @Delete(':id')
-  async delete(@Param('id') id:string): Promise<DeleteResult> {
-    return this.clientesService.delete(Number(id));
+  async delete(@Param('id', ParseIntPipe) id:number): Promise<DeleteResult> {
+    return this.clientesService.delete(id);
   }   
 
 }
