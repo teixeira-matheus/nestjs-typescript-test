@@ -8,13 +8,13 @@ export class Experiencia {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Loja, loja => loja.experiencias)
+    @ManyToOne(() => Loja, loja => loja.experiencias, { eager: true })
     loja: Loja;
 
-    @ManyToOne(() => Colaborador, colaborador => colaborador.experiencias)
+    @ManyToOne(() => Colaborador, colaborador => colaborador.experiencias, { eager: true })
     colaborador: Colaborador;
 
-    @ManyToOne(() => Cliente, cliente => cliente.experiencias)
+    @ManyToOne(() => Cliente, cliente => cliente.experiencias, { eager: true })
     cliente: Cliente;
 
     @Column({ type: "date" })
