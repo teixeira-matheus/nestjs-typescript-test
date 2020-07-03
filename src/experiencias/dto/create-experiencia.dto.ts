@@ -20,7 +20,7 @@ export class CreateExperienciaDto {
 
   @IsNotEmpty()
   @IsDate()
-  @ApiProperty({ type: Number, description: 'Transaction date'})
+  @ApiProperty({ type: Date, description: 'Transaction date'})
   data: Date;
 
   @IsNotEmpty()

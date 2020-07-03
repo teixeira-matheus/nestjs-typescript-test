@@ -30,7 +30,7 @@ export class UpdateExperienciaDto {
   @IsOptional()
   @IsNotEmpty()
   @IsDate()
-  @ApiPropertyOptional({ type: Number, description: 'Transaction date'})
+  @ApiPropertyOptional({ type: Date, description: 'Transaction date'})
   data: Date;
 
   @IsOptional()
