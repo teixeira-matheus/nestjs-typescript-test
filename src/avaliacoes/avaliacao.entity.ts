@@ -7,8 +7,10 @@ export class Avaliacao {
     id: number;
 
     // create experienciaId
-    @OneToOne(() => Experiencia)
-    @JoinColumn()
+    @Column({ name: 'experienciaId' })
+    experienciaId: number;
+    @OneToOne(() => Experiencia, { eager: true, cascade: true })
+    @JoinColumn({ name: 'experienciaId' })
     experiencia: Experiencia;
 
     @Column({ nullable: true })
