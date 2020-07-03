@@ -6,7 +6,7 @@ export class UpdateColaboradorDto {
   @IsOptional()
   @IsNotEmpty()
   @IsInt()
-  @ApiPropertyOptional({ type: String, description: 'Employee ID'})
+  @ApiPropertyOptional({ type: Number, description: 'Employee ID'})
   id: number;
 
   @IsOptional()

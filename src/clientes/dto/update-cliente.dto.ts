@@ -8,7 +8,7 @@ export class UpdateClienteDto {
   @IsOptional()
   @IsNotEmpty()
   @IsInt()
-  @ApiPropertyOptional({ type: String, description: 'Client ID'})
+  @ApiPropertyOptional({ type: Number, description: 'Client ID'})
   id: number;
 
   @IsOptional()
