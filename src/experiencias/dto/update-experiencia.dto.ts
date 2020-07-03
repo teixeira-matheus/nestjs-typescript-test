@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsInt, IsDate, IsOptional, IsNumber } from 'class-validator'
+import { IsNotEmpty, IsInt, IsDateString, IsOptional, IsNumber } from 'class-validator'
 import { ApiPropertyOptional } from '@nestjs/swagger';
 
 export class UpdateExperienciaDto {
@@ -29,7 +29,7 @@ export class UpdateExperienciaDto {
 
   @IsOptional()
   @IsNotEmpty()
-  @IsDate()
+  @IsDateString()
   @ApiPropertyOptional({ type: Date, description: 'Transaction date'})
   data: Date;
 

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsInt, IsNumber, IsDate } from 'class-validator'
+import { IsNotEmpty, IsInt, IsNumber, IsDateString } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateExperienciaDto {
@@ -19,7 +19,7 @@ export class CreateExperienciaDto {
   clienteId: number;
 
   @IsNotEmpty()
-  @IsDate()
+  @IsDateString()
   @ApiProperty({ type: Date, description: 'Transaction date'})
   data: Date;
 
