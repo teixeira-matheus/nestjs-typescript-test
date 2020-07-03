@@ -40,6 +40,8 @@ $ yarn test:e2e
 # test coverage
 $ yarn test:cov
 ```
+## API Documentation
+http://localhost:3000/api/
 
 ## Stay in touch
 
